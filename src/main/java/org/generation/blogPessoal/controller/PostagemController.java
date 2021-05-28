@@ -54,11 +54,11 @@ public class PostagemController {
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
-//		repository.deleteById(id);
-		if (repository.findById(id).isPresent()) {
+		repository.deleteById(id);
+		/*if (repository.findById(id).isPresent()) {
 			repository.deleteById(id);
 		} else {
 			ResponseEntity.status(HttpStatus.OK);
-		}
+		}*/
 	}
 }
