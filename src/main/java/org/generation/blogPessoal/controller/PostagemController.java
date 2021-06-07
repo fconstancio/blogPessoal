@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/postagens")
-@CrossOrigin("*")
 public class PostagemController {
 
 	@Autowired
@@ -55,10 +55,5 @@ public class PostagemController {
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
-		/*if (repository.findById(id).isPresent()) {
-			repository.deleteById(id);
-		} else {
-			ResponseEntity.status(HttpStatus.OK);
-		}*/
 	}
 }
