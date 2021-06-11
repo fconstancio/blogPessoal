@@ -16,17 +16,36 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotNull
-	@Size(min = 2, max = 100)
+	@NotNull(message = "nome nao pode ser null")
+	@Size(max = 100)
 	private String nome;
 
-	@NotNull
-	@Size(min = 5, max = 100)
+	@NotNull(message = "usuario nao pode ser null")
+	@Size(max = 100)
 	private String usuario;
 
-	@NotNull
-	@Size(min = 5, max = 100)
+	@NotNull(message = "senha nao pode ser null")
+	@Size(min = 5)
 	private String senha;
+
+	public Usuario(@NotNull @Size(min = 5, max = 100) String usuario, 
+			@NotNull @Size(min = 5, max = 100) String senha) {
+		super();
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
+	public Usuario(@NotNull(message = "nome nao pode ser null") @Size(max = 100) String nome,
+			@NotNull(message = "usuario nao pode ser null") @Size(max = 100) String usuario,
+			@NotNull(message = "senha nao pode ser null") @Size(min = 5) String senha) {
+		super();
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
+	public Usuario() {
+	}
 
 	public long getId() {
 		return id;
